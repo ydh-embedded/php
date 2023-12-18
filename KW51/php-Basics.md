@@ -212,9 +212,23 @@ Initialisiert zur Entwicklung einen String (Platzhalter) und später mit einer G
     $s = 7 ;
     echo '<p>Das Licht ist' . ($s === 1 ? 'AN' : 'AUS' ) . '!</p>'  ;
 
+## Spaceship-Operator
+
+Der Operator wurde mit php7 eingeführt
+Er kann den Ersten Wert mit dem Zweiten Wert vergleichen
+
+.
+
+    <?php
+        echo "Erster  Wert"   .   ( 12 <=>  5)   .  "<br>"  ;   //Ergebnis:   1
+        echo "Zweiter Wert"   .   (  5 <=> 12)   .  "<br>"  ;   //Ergebnis:  -1
+        echo "Dritter Wert"   .   (  5 <=>  5)   .  "<br>"  ;   //Ergebnis:   0
+    ?>
+.
+
 ## Switch - Anweisung mit Bedingung im case Teil
 
-            echo "<p>Das Gepäck wiegt $gewicht kg. Es gehört zur Kategorie ";
+        echo "<p> Das Gepäck wiegt $gewicht kg. Es gehört zur Kategorie ";
 
         switch (true) {
             case ($gewicht <= 20):
@@ -279,3 +293,23 @@ do while ( ) { }
     
     ?>
 .
+
+## Koaleszenz-Operator
+
+Der Koaleszenz-Operator ***??*** wurde mit php7 eingeführt, er verschmilzt die Funktion von:
+
+                            isset ( )
+und
+
+                               ? :
+
+isset ist die Existenz-Fuktion und ? : ist der ternäre Operator
+
+## kombinierter Zuweisungs-Operator
+
+Der kombinierte Zuweisungs-Operator verbindet den Koaleszenz-Operator mit einer Zuweisung
+
+                               ??=
+.
+
+Der Name Koaleszenz-Operator trägt den Namen in Anlehnung an de Verschmelzung der unterschiedlichen Flüssigkeiten (englisch: ***coalescence***)
