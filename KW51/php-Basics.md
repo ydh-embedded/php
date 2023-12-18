@@ -109,6 +109,7 @@ um die Fehlermeldung anzuzeigen muss die Zeile error_reporting auf (E_ALL) setze
 ## Warning
 
 warnung vom php Interpreter beheben
+<a href="www.php.net" >php Website</a>
 
 ## php.ini wenn man den Zugriff auf dem WEb-Server hat
 
@@ -189,3 +190,92 @@ Initialisiert zur Entwicklung einen String (Platzhalter) und später mit einer G
 .
 
 ***
+
+## Datentyp-Vergleich identischer Opperator
+
+.
+
+    echo '<p>$a ist identisch $b ? (===):<br>'  ;
+    if ($a === $b) {
+            echo 'true';
+    } else {
+            echo 'false';
+    }
+
+    echo '</p>';
+.
+
+## Ternär Operator
+
+.
+
+    $s = 7 ;
+    echo '<p>Das Licht ist' . ($s === 1 ? 'AN' : 'AUS' ) . '!</p>'  ;
+
+## Switch - Anweisung mit Bedingung im case Teil
+
+            echo "<p>Das Gepäck wiegt $gewicht kg. Es gehört zur Kategorie ";
+
+        switch (true) {
+            case ($gewicht <= 20):
+                echo 'S (bis 20 kg)';
+                break;
+            case ($gewicht <= 40):
+                echo 'M (bis 40 kg)';
+                break;
+            default:
+                echo 'L (über 40 kg)';
+        }
+
+        echo '.</p>';
+
+## Match - Anweisung
+
+    <?php
+        
+        $farbe = 'rot';
+
+        $ergebnis = match ($farbe) {
+            'gruen', 'blau' => '0 gewinnt',
+            'rot'           => 'Rote Zahlen gewinnen.',
+            'schwarz'       => 'Schwarze Zahlen gewinnen',
+            default         => 'kein korrekter Wert'
+        };
+
+        echo "<p>Die Farbe ist $farbe.</p>";
+        echo "<p><code>match()</code> gab zurück: $ergebnis</p>";
+        
+    ?>
+
+## Schleifen
+
+### HEAD-Controlled
+
+while ( ) { }
+
+    $zahl = 10;
+
+      echo '<p>';
+        while ($zahl <= 100) {
+            echo "$zahl<br>";
+            $zahl += 5;
+        }
+      echo '</p>';
+
+### Bottom-Controlled
+
+do while ( ) { }
+
+    <?php
+    
+    echo '<p>';
+    
+        do {
+            echo "$zahl<br>";
+            $zahl += 5;
+        } while ($zahl <= 100);
+    
+    echo '</p>';
+    
+    ?>
+.
