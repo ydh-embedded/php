@@ -92,3 +92,29 @@ Variablen fangen immer mit KleinBuchstaben an keine Zahl
 ## php Interpreter
 
 werden im Code die "" verwendet so werden die Argumente immer durch den Interpreter geschickt. Es wird empfohlen, wenn keine variablen vorhanden sind die "" mit den einfachen '' zu ersetzen (Performance Gründe)
+
+## Error
+
+ein Error wird mit einer weisen Seite angezeigt
+um die Fehlermeldung anzuzeigen muss die Zeile error_reporting auf (E_ALL) setzen !
+
+    <?php
+            error_reporting (E_ALL);
+    ?>
+
+## Warning
+
+warnung vom php Interpreter beheben
+
+
+## php.ini wenn man den Zugriff auf dem WEb-Server hat
+
+display_errors
+    Default Value: On
+    Developement: On
+
+display_errors=Off
+
+## ini_set
+
+ini_set('display_errors' , 'On') ;

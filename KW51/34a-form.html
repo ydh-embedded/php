@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formular Gehälter</title>
+</head>
+
+<body>
+  <p>Anzeige der Personen aus der Gehaltsgruppe:</p>
+  <form action="34b-ausg-gehalt.php" method="post">
+    <p>
+      <input type="radio" name="gehalt" value="1" checked="checked"> bis 3000 € einschl.<br>
+
+      <input type="radio" name="gehalt" value="2">
+      ab 3000 € ausschl. bis 3500 € einschl.<br>
+
+      <input type="radio" name="gehalt" value="3">
+      ab 3500 € ausschl. bis 5000 € einschl.<br>
+
+      <input type="radio" name="gehalt" value="4"> ab 5000 € ausschl.
+    </p>
+    <p><input type="submit"> <input type="reset"></p>
+  </form>
+</body>
+
+</html>
