@@ -1,3 +1,5 @@
+# php
+
 ## php  Aufbau
 
 Eine php datei gibt an den Browser eine statische html datei
@@ -10,9 +12,9 @@ dafür laden wir die Datei runter etwa 10 KB und legen diese in folgenden <a hre
 
     C:\Users\admin\AppData\Roaming\Code\User\snippets
 
-
 ## Links
 
+.
 <a href="[C:\Users\admin\AppData\Roaming\Code\User\snippets](https://kurse.jaderbass.de/?page=php)">Pfad Jaderbass Website</a></a>
 
 ## etwas Code
@@ -72,6 +74,7 @@ Kurzform
     <?= '<h2>Direkte Ausgabe</h2>' ; ?>
 
 .
+
 ## Variablen in php
 
 Variablen werden mit dem Dollar Zeichen begonnen (interne Kennzeichnung einer Variable)
@@ -89,6 +92,7 @@ Variablen fangen immer mit KleinBuchstaben an keine Zahl
 ## Kurzschreibweise in ""
 
     echo "<p>Der Inhalt meiner Variable ist: $eine_variable</p>" ;
+
 ## php Interpreter
 
 werden im Code die "" verwendet so werden die Argumente immer durch den Interpreter geschickt. Es wird empfohlen, wenn keine variablen vorhanden sind die "" mit den einfachen '' zu ersetzen (Performance Gründe)
@@ -106,15 +110,82 @@ um die Fehlermeldung anzuzeigen muss die Zeile error_reporting auf (E_ALL) setze
 
 warnung vom php Interpreter beheben
 
-
 ## php.ini wenn man den Zugriff auf dem WEb-Server hat
 
-display_errors
-    Default Value: On
-    Developement: On
+wir schalten die Fehler-Meldung hiermit aus:
 
-display_errors=Off
+    display_errors
+        Default Value: On
+        Developement: On
+
+    display_errors=Off
 
 ## ini_set
 
-ini_set('display_errors' , 'On') ;
+wir schalten die Fehler-Meldung hiermit aus:
+
+    ini_set('display_errors' , 'On') ;
+
+## Datentyp "Typlose Variable"
+
+in php werden Variablen deklariert können aber im Quelltext unterschiedliche Typen erfahren
+Initialisiert zur Entwicklung einen String (Platzhalter) und später mit einer Ganzzahl(nummerische Zahl)
+
+## Wir rechnen mit der dynamischen Typ-Convertierung
+
+    $preis = 2.59   ;
+    $menge = 4      ;
+
+    $ergebnis = $menge * $preis ; //hier wird ein float erwirkt durch den double Wert
+    $ergebnis = 10,36 ;
+.
+
+## Wir erstellen eine Zeichenkette mit einer Variable
+
+    $a = ' <p> Erfurt ist ';
+    $a = ' <p> Jena ist   '; // $a wird überschrieben
+    $b = ' eine schöne';
+
+    $c =  $a . $b . ' Stadt.</p>';
+            echo $c ;
+
+    $a =  '<p>Erfurt ist ';
+    $a .= 'aber viel ';
+    $a .= 'schöner.</p>';
+            echo $a ;
+
+## Wir verwenden in php sehr gerne Klammern ()
+
+    $preis_ziege = '0.5 Kamele';        //sollte die Zeichenkette mit einer Nummerischen Zahl beginnen wird ein Float erstellt
+
+    $menge = 5 * 2;
+
+    echo "<p>Eine Ziege kostet $preis_ziege.</p>";
+
+    echo "<p>$menge Ziegen kosten " . ($preis_ziege * $menge) . " Kamele.</p>";
+
+## dirty Coding
+
+//  sollte die Zeichenkette mit einer Nummerischen Zahl beginnen wird ein Float erstellt
+//  Gefahr von Typ-Convertierung die nicht einsehbar ist!
+
+    $preis_ziege = '0.5 Kamele';
+
+## Konstanten immer mit ' '
+
+.
+**klassische Variante**
+
+        define('SEK_TAG', 24 * 60 * 60);
+        #define('SEK_TAG', 86400);
+
+.**neuere Variante** seit PHP 5.5, funktioniert nur im Top-Level-Scope
+
+    const MIN_TAG = 24 * 60;
+.
+
+## Trenn-Striche erzeugen
+
+.
+
+***
