@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Formular</title>
+</head>
+<body>
+  <h1>Mein Formular</h1>
+
+  <form action="21b-formular.php" method="post">
+
+    <p>
+      <label>
+        <input type="radio" name="anrede" value="m">
+        Herr
+      </label>
+      <label>
+        <input type="radio" name="anrede" value="f">
+        Frau
+      </label>
+      <label>
+        <input type="radio" name="anrede" value="d">
+        Divers
+      </label>
+    </p>
+
+    <p>
+      <label for="uname">Vollständiger Name:</label>
+      <input type="text" name="uname" id="uname">
+    </p>
+
+    <p>
+      <label for="pw">Passwort</label>
+      <input type="password" name="pw" id="pw">
+    </p>
+
+    <input type="hidden" name="hidden" value="verstecktes Feld">
+
+    <p>Welche Kurse möchten Sie belegen
+      <label>
+        <input type="checkbox" name="kurs[]" value="html">
+        HTML / CSS
+      </label>
+      <label>
+        <input type="checkbox" name="kurs[]" value="php">
+        PHP
+      </label>
+      <label>
+        <input type="checkbox" name="kurs[]" value="js">
+        JavaScript
+      </label>
+    </p>
+
+    <p>
+      <label for="dat">Wann möchten Sie den Kurs belegen?</label>
+      <input type="datetime-local" name="dat" id="dat">
+    </p>
+
+    <p>
+      <label for="status">Welchen Status haben Sie?</label>
+      <select name="status" id="Status">
+        <option>-- Bitte auswählen --</option>
+        <option>Anfänger</option>
+        <option>Fortgeschrittener</option>
+        <option>Profi</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="hardware">Über welche Ausgabegeräte verfügen Sie?</label>
+      <select name="hardware[]" id="hardware" multiple>
+        <option value="d">Desktop-Computer</option>
+        <option value="t-a">Tablet (Android)</option>
+        <option value="t-i">Tablet (iOS)</option>
+        <option value="s-a">Smartphone (Android)</option>
+        <option value="s-i">Smartphone (iOS)</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="msg">Ihre Nachricht</label>
+      <textarea name="msg" id="msg" cols="30" rows="10"></textarea>
+    </p>
+
+    <p>
+      <input type="submit" name="send1" value="Sende 1">
+      <button type="submit" name="send2" value="Sende 2">Sende 2</button>
+      <input type="reset" value="Zurücksetzen">
+    </p>
+
+  </form>
+
+</body>
+</html>
