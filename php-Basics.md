@@ -8,14 +8,17 @@ Plug-In Installieren php-elephant
 
 Code Snipped installieren
 
-dafür laden wir die Datei runter etwa 10 KB und legen diese in folgenden <a href="C:\Users\admin\AppData\Roaming\Code\User\snippets">Pfad</a></a> ab:
+dafür laden wir die Datei runter etwa 10 KB und legen diese in folgenden [Pfad](C:\Users\admin\AppData\Roaming\Code\User\snippets) ab:
 
     C:\Users\admin\AppData\Roaming\Code\User\snippets
 
 ## Links
 
+[Pfad Jaderbass Website](https://kurse.jaderbass.de/?page=php)
+
+[Pfad Jaderbass File](C:\Users\admin\AppData\Roaming\Code\User\snippets)
+
 .
-<a href="[C:\Users\admin\AppData\Roaming\Code\User\snippets](https://kurse.jaderbass.de/?page=php)">Pfad Jaderbass Website</a></a>
 
 ## etwas Code
 
@@ -102,14 +105,16 @@ werden im Code die "" verwendet so werden die Argumente immer durch den Interpre
 ein Error wird mit einer weisen Seite angezeigt
 um die Fehlermeldung anzuzeigen muss die Zeile error_reporting auf (E_ALL) setzen !
 
-    <?php
-            error_reporting (E_ALL);
-    ?>
+\``` php
+
+   \<?php error_reporting (E_ALL); ?>
+
+\```
 
 ## Warning
 
-warnung vom php Interpreter beheben
-<a href="www.php.net" >php Website</a>
+// TODO: warnung vom php Interpreter beheben
+`<a href="www.php.net" >php Website</a>`
 
 ## php.ini wenn man den Zugriff auf dem WEb-Server hat
 
