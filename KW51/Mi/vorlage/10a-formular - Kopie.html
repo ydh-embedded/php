@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formular</title>
+</head>
+<body>
+    <h1>Kontaktformular</h1>
+
+    <form action="10b-formular-auswerten.php" method="post">
+
+        <p>
+            <label for="firstname">Vorname</label>
+            <input type="text" name="fname" id="fname">
+        </p>
+        <p>
+            <label for="lastname">Nachname</label>
+            <input type="text" name="lname" id="lname">
+        </p>
+        <p>
+            <label for="email">E-Mail-Adresse</label>
+            <input type="email" name="email" id="email">
+        </p>
+        <p>
+            <label for="msg">Nachricht</label>
+            <textarea name="msg" id="msg" cols="30" rows="10"></textarea>
+        </p>
+        <p>
+            <input type="submit" value="Senden">
+            <input type="reset" value="Zurücksetzen">
+        </p>
+
+    </form>
+</body>
+</html>

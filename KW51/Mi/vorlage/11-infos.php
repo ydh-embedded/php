@@ -11,12 +11,13 @@
   <?php
     
   $file = 'benutzer.csv';
-  $info = stat($file);
-  
+  $info = stat($file);      //stat ist eine Funktion mit der ich mir das $file ausgeben lassen kann
+  echo '<pre>' , print_r ( $info , true ) , '</pre>' ;
 
+    echo "<p> Name $file , Größe: ". $info['size'] ." Bytes </p>" ;
 
-  /* 
-   * Magische Konstante  
+  /*
+   * Magische Konstante
    Der Name des Verzeichnisses, in dem sich die Datei befindet.
    siehe: https://www.php.net/manual/de/language.constants.magic.php
    */

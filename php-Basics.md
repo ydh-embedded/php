@@ -318,3 +318,10 @@ Der kombinierte Zuweisungs-Operator verbindet den Koaleszenz-Operator mit einer 
 .
 
 Der Name Koaleszenz-Operator trägt den Namen in Anlehnung an de Verschmelzung der unterschiedlichen Flüssigkeiten (englisch: ***coalescence***)
+
+## Webserver
+
+Kontaktformular nicht über doppelklick aufrufen, sondern immer über den Webserver !!
+
+[Eingabe-Maske](https://localhost/html/php_Formular/v03/form_10.0_v03_Eingabe_Maske.html) beginnt mit localhost//...
+

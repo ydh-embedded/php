@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formular</title>
+</head>
+<body>
+<h1>Kontaktformular</h1>
+
+<!--                 mit der form action                        -->
+<!--                     Verweisen wir                          -->
+<!--                auf die Ziel Datei php                      -->
+<!--           die methode post wird hier verwendet             -->
+
+<form action="form_10.0_v03_Eingabe_Convert_to_Array.php" method="post">
+
+        <p> <!-- "firstname" -->
+            <label for="firstname">Vorname</label>
+            <input type="text" name="firstname" id="fname">
+        </p>
+
+        <p> <!-- "lastname" -->
+            <label for="lastname">Nachname</label>
+            <input type="text" name="lastname" id="lname">
+        </p>
+
+        <p> <!-- "email" -->
+            <label for="email">E-Mail-Adresse</label>
+            <input type="email" name="email" id="email">
+        </p>
+
+        <p> <!-- "message" -->
+            <label for="msg">Nachricht</label>
+            <textarea name="msg" id="msg" cols="30" rows="10"></textarea>
+        </p>
+
+        <p> <!-- "submit" -->
+            <input type="submit" value="Senden">
+            <input type="reset" value="Zurücksetzen">
+        </p>
+
+
+    </form>
+</body>
+</html>
