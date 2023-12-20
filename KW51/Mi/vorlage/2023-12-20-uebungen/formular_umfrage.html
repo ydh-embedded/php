@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Übung (Kapitel 8)</title>
+</head>
+<body>
+  <h1>Umfrage mit Gewinnspiel</h1>
+  <p>Wir freuen uns, blah blah blah.</p>
+  <form action="umfrage.php" method="post">
+    <p>
+      <label for="uname">Vorname und Nachname</label>
+      <input type="text" name="uname" id="uname">
+    </p>
+    <p>
+      <label for="strasse">Straße</label>
+      <input type="text" name="strasse" id="strasse">
+    </p>
+    <p>
+      <label for="ort">PLZ und Ort</label>
+      <input type="text" name="ort" id="ort">
+    </p>
+
+    <p><b>Bitte wählen Sie eine Antwort aus, die für Sie am ehesten zutrifft:</b></p>
+
+    <p class="radio" style="background-color: #999; padding: 5px;">
+      Wie gefällt Ihnen unser Internetangebot?<br>
+      <label>
+        <input type="radio" name="inet" value="3"> sehr gut
+      </label><br>
+      <label>
+        <input type="radio" name="inet" value="2"> gut
+      </label><br>
+      <label>
+        <input type="radio" name="inet" value="1"> nicht so gut
+      </label><br>
+      <label>
+        <input type="radio" name="inet" value="0"> gar nicht
+      </label>
+    </p>
+
+    <p class="radio" style="background-color: #ccc; padding: 5px;">
+      Wie beurteilen Sie den Informationsgehalt unserer Website?<br>
+      <label>
+        <input type="radio" name="info" value="2"> sehr informativ
+      </label><br>
+      <label>
+        <input type="radio" name="info" value="1"> die eine oder andere Information fehlt
+      </label><br>
+      <label>
+        <input type="radio" name="info" value="0"> es fehlen sehr viele wichtige Informationen
+      </label>
+    </p>
+
+    <p class="radio" style="background-color: #eee; padding: 5px;">
+      Wie kommen Sie mit dem Bestellsystem zurecht?<br>
+      <label>
+        <input type="radio" name="bestell" value="3"> sehr gut
+      </label><br>
+      <label>
+        <input type="radio" name="bestell" value="2"> gut
+      </label><br>
+      <label>
+        <input type="radio" name="bestell" value="1"> nicht besonders gut
+      </label><br>
+      <label>
+        <input type="radio" name="bestell" value="0"> gar nicht
+      </label>
+    </p>
+
+    <p>
+      <label for="nachricht">Möchten Sie uns noch etwas mitteilen?</label>
+      <input type="text" name="nachricht" id="nachricht">
+    </p>
+
+    <p>
+      <input type="submit" value="Absenden">
+    </p>
+  </form>
+</body>
+</html>
