@@ -11,8 +11,8 @@
   <h1>Dateiarbeit</h1>
 
   <?php
-
-    /* 
+#region docs
+    /*
     Die Modi und ihre Bedeutung
 
     r   read    nur zum lesen öffnen
@@ -37,7 +37,7 @@
                 Dateizeiger am Anfang (Daten werden am Anfang der Datei hinzugefügt)
     c+          wie c, aber Lesen und Schreiben
     */
-
+#endregion
     
     $file = '08-user.txt';
 
@@ -45,7 +45,7 @@
     if( file_exists($file) && is_file($file) ) {
 
       // 2. Datei öffnen
-      $fh = fopen($file, 'r');
+      $fh = fopen($file, 'r');      // Datei nur zum lesen öffnen
 
       // 3. Schleife über alle Zeilen der Datei
       while( ! feof($fh) ) {
@@ -64,14 +64,14 @@
 
   <?php
     
-    /* 
-    * readfile() 
+    /*
+    * readfile()
     liest eine Datei komplett und gibt sie ohne weitere Bearbeitungsmöglichkeit direkt im Browser aus 
     */
     readfile($file);
 
-    /* 
-    * file() 
+    /*
+    * file()
     liest ebenfalls eine komplette Datei, gibt aber ein Array zurück in welchem jedes Array-Element eine Zeile der Datei darstellt. 
     */
     $filecontent = file($file);
@@ -87,8 +87,8 @@
 
   <?php
     
-    /* 
-    * nl2br() 
+    /*
+    * nl2br()
     wandelt New Line Steuerzeichen in HTML <br> um
     false gibt an, dass kein XHTML-konformes Tag ausgegeben werden soll
     */

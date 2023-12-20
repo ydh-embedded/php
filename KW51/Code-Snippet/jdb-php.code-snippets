@@ -1,0 +1,373 @@
+{
+	// PHP
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Schreibe Header": {
+		"scope": "php",
+		"prefix": "phead",
+		"body": [
+			"require_once( '../includes/functions.inc.php' );",
+			"/*",
+			"* get_header(",
+			"*\tstring \\$title,",
+			"*\tstring/array \\$css=NULL,",
+			"*\tbool \\$bootstrap=false,",
+			"*\tstring \\$header=NULL,",
+			"*\tarray \\$nav=NULL,",
+			"*\tbool \\$fluid=false",
+			"* )",
+			"*/",
+			"\\$args = array(",
+			"\t$1",
+			");",
+			"get_header( ...\\$args );",
+			"?>"
+		],
+		"description": "Fügt das Script für die Einbindung des HTML-Headers ein"
+	},
+	"Schreibe Footer": {
+		"scope": "php",
+		"prefix": "pfoot",
+		"body": "<?php get_footer(); ?>",
+		"description": "Fügt das Script für die Einbindung des HTML-Footers ein"
+	},
+	"PHP-Bereich": {
+		"scope": "html",
+		"prefix": "php",
+		"body": "<?php $0 ?>",
+		"description": "Fügt einen PHP-Bereich ein."
+	},
+	"PHP-Ausgabe": {
+		"scope": "html",
+		"prefix": "pecho",
+		"body": "<?= $0 ?>",
+		"description": "Fügt eine PHP-Ausgabe ein."
+	},
+	"PHP-Bereich Umbruch": {
+		"scope": "html",
+		"prefix": "php+",
+		"body": [
+			"<?php",
+			"\t",
+			"\t$0",
+			"\t",
+			"?>"
+		],
+		"description": "Fügt einen PHP-Bereich mit Zeilenumbrüchen ein."
+	},
+	"Formular Eigenaufruf": {
+		"scope": "php,html",
+		"prefix": "formself",
+		"body": [
+			"<form action=\"<?= \\$_SERVER['SCRIPT_NAME']; ?>\" method=\"post\">",
+			"\t$0",
+			"</form>"
+		],
+		"description": "Fügt einen Formular-Bereich mit Selbstaufruf ein."
+	},
+	"Grundgerüst für PHP": {
+		"scope": "php,html",
+		"prefix": "pfull",
+		"body": [
+			"<?php",
+			"require_once( '../includes/functions.inc.php' );",
+			"/* get_header(",
+			"*\tstring \\$title,",
+			"*\tstring/array \\$css=NULL,",
+			"*\tbool \\$bootstrap=false,",
+			"*\tstring \\$header=NULL,",
+			"*\tarray \\$nav=NULL,",
+			"*\tbool \\$fluid=false",
+			"* )",
+			"*/",
+			"\\$args = array(",
+			"\t$1",
+			");",
+			"get_header( ...\\$args );",
+			"?>",
+			"\t$2",
+			"<?php get_footer(); ?>"
+		],
+		"description": "Fügt das Grundgerüst für den PHP-Kurs ein."
+	},
+	"Grundgerüst PHP mit DB": {
+		"scope": "php,html",
+		"prefix": "pfulldb",
+		"body": [
+			"<?php",
+			"require_once( '../includes/functions.inc.php' );",
+			"\\$database = $1;",
+			"/* get_header(",
+			"*\tstring \\$title,",
+			"*\tstring/array \\$css=NULL,",
+			"*\tbool \\$bootstrap=false,",
+			"*\tstring \\$header=NULL,",
+			"*\tarray \\$nav=NULL,",
+			"*\tbool \\$fluid=false",
+			"* )",
+			"*/",
+			"\\$args = array(",
+			"\t$2",
+			");",
+			"get_header( ...\\$args );",
+			"require_once( '../includes/pdo-connect.inc.php' );",
+			"?>",
+			"\t$3",
+			"<?php get_footer(); ?>"
+		],
+		"description": "Fügt das Grundgerüst für den PHP-Kurs inklusive Datenbankzugriff ein."
+	},
+	"var_dump()": {
+		"scope": "php",
+		"prefix": "vd",
+		"body":  "echo '<pre>', var_dump( $1 ), '</pre>';",
+		"description": "Gibt ein pre-formatiertes var_dump() aus."
+	},
+	"var_dump()+": {
+		"scope": "php",
+		"prefix": "vd+",
+		"body":  [
+			"echo '<pre>';",
+			"var_dump( $1 )",
+			"echo '</pre>';"
+		],
+		"description": "Gibt ein pre-formatiertes var_dump() mit Zeilenumbrüchen aus."
+	},
+	"print_r()": {
+		"scope": "php",
+		"prefix": "pr",
+		"body":  "echo '<pre>', print_r( $1 ), '</pre>';",
+		"description": "Gibt ein pre-formatiertes print_r() aus."
+	},
+	"print_r()+": {
+		"scope": "php",
+		"prefix": "pr+",
+		"body":  [
+			"echo '<pre>'", 
+			"print_r( $1 )",
+			"echo '</pre>';"
+		],
+		"description": "Gibt ein pre-formatiertes print_r() mit Zeilenumbrüchen aus."
+	},
+	"Absatzausgabe PHP": {
+		"scope": "php",
+		"prefix": "ep",
+		"body":  "echo '<p>' . $1 . '</p>';",
+		"description": "Gibt per echo je ein Absatz-Anfangs und Ende-Tag aus und setzt den Zeiger in die Zeile dazwischen."
+	},
+	"Absatzausgabe PHP mit Umbruch": {
+		"scope": "php",
+		"prefix": "ep+",
+		"body":  [
+			"echo '<p>';", 
+			"$1",
+			"echo '</p>';"
+		],
+		"description": "Gibt per echo je ein Absatz-Anfangs und Ende-Tag aus und setzt den Zeiger in die Zeile dazwischen."
+	},
+	"Kommentar Titel PHP": {
+		"scope": "php",
+		"prefix": "komtitel",
+		"body": [
+			"/* === ${1:Titel}",
+			"============================================================================================= */"
+		],
+		"description": "Ausgabe eines Kommentar-Titels in PHP-Dateien"
+	},
+	"ausführlicher Kommentar": {
+		"scope": "php",
+		"prefix": "komfull",
+		"body": [
+			"/**",
+			" * ${1:Summary}",
+			" *",
+			" * ${2:Description}",
+			" *",
+			" * @since ${3:x.x.x}",
+			" *",
+			" * @see ${4:function/method/class} relied on",
+			" * @link ${5:url}",
+			" * @global ${6:type} ${7:varname} ${8:Description}.",
+			" * @param ${9:type} ${10:var} ${11:Optional. / Description. / Default.}",
+			" * @return ${12:type} ${13:Description}.",
+			" */"
+		],
+		"description": "Ausgabe eines ausführlichen Kommentar-Textes zur Beschreibung von Funktionen / Methoden / Klassen in PHP-Dateien"
+	},
+	"PHP SQL-Abfrage": {
+		"scope": "php",
+		"prefix": "sqlquery",
+		"body": [
+			"\\$sql = $1;",
+			"",
+			"\\$result = mysqli_query( \\$db, \\$sql );",
+			"",
+			"if( false === \\$result ) {",
+			"\t$2",
+			"} else {",
+			"\techo get_db_error( \\$db, \\$sql );",
+			"}"
+		],
+		"description": "Ausgabe für mySQL-Datenbank-Abfragen"
+	},
+	"PHP PDO-SELECT-Abfrage": {
+		"scope": "php",
+		"prefix": "pdoselect",
+		"body": [
+			"\\$sql = '$1';",
+			"",
+			"try {",
+			"\tif (\\$stmt = \\$pdo->query(\\$sql)) {",
+			"\t\tif( \\$stmt->rowCount() === 0 ) {",
+			"\t\t\techo '<p>Keine Datensätze gefunden.</p>';",
+			"\t\t} else {",
+			"\t\t\twhile (\\$row = \\$stmt->fetch(PDO::FETCH_ASSOC)) {",
+			"\t\t\t\t$2",
+			"\t\t\t}",
+			"\t\t}",
+			"\t}",
+			"\\$stmt = NULL;",
+			"\\$pdo = NULL;",
+			"} catch (PDOException \\$e) {",
+			"\techo 'ERROR:<br>' . \\$e->getMessage();",
+			"}"
+		],
+		"description": "PDO SELECT"
+	},
+	"PHP PDO-SELECT-Prepared": {
+		"scope": "php",
+		"prefix": "ppselect",
+		"body": [
+			"\\$sql = 'SELECT $1 FROM $2';",
+			"",
+			"try {",
+			"\tif (\\$stmt = \\$pdo->prepare(\\$sql)) {",
+			"\t\t\\$stmt->bindParam( $3, $4);",
+			"\t\t\\$stmt->execute();",
+			"\t\tif( \\$stmt->rowCount() === 0 ) {",
+			"\t\t\techo '<p>Keine Datensätze gefunden.</p>';",
+			"\t\t} else {",
+			"\t\t\twhile (\\$row = \\$stmt->fetch(PDO::FETCH_ASSOC)) {",
+			"\t\t\t\t$5",
+			"\t\t\t}",
+			"\t\t}",
+			"\t}",
+			"\\$stmt = NULL;",
+			"\\$pdo = NULL;",
+			"} catch (PDOException \\$e) {",
+			"\techo 'ERROR:<br>' . \\$e->getMessage();",
+			"}"
+		],
+		"description": "PDO SELECT mit Prepared Statements"
+	},
+	"PHP PDO-INSERT-Prepared": {
+		"scope": "php",
+		"prefix": "ppinsert",
+		"body": [
+			"if(!empty(\\$_POST)) {",
+			"\t\\$sql = 'INSERT INTO $1",
+			"\t(",
+			"\t\t$2",
+			"\t)",
+			"\tVALUES",
+			"\t(",
+			"\t\t$3",
+			"\t)';",
+			"\t",
+			"\ttry {",
+			"\t\tif (\\$stmt = \\$pdo->prepare(\\$sql)) {",
+			"\t\t\t\\$stmt->bindParam( $4, $5);",
+			"",
+			"\t\t\tif( \\$stmt->execute() ) {",
+			"\t\t\t\techo '<p>Der Datensatz wurde angelegt</p>';",
+			"\t\t\t}",
+			"\t\t}",
+			"\t\\$stmt = NULL;",
+			"\t\\$pdo = NULL;",
+			"\t} catch (PDOException \\$e) {",
+			"\t\techo 'ERROR:<br>' . \\$e->getMessage();",
+			"\t}",
+			"}"
+		],
+		"description": "PDO INSERT mit Prepared Statements"
+	},
+	"PHP PDO-UPDATE-Prepared": {
+		"scope": "php",
+		"prefix": "ppupdate",
+		"body": [
+			"if(!empty(\\$_POST)) {",
+			"\t\\$sql = 'UPDATE $1",
+			"\tSET $2",
+			"\tWHERE $3';",
+			"\t",
+			"\ttry {",
+			"\t\tif (\\$stmt = \\$pdo->prepare(\\$sql)) {",
+			"\t\t\t\\$stmt->bindParam( $4, $5);",
+			"",
+			"\t\t\tif( \\$stmt->execute() ) {",
+			"\t\t\t\techo '<p>Es wurden ' . \\$stmt->rowCount() . ' Datensätze geändert.</p>';",
+			"\t\t\t}",
+			"\t\t}",
+			"\t\\$stmt = NULL;",
+			"\t\\$pdo = NULL;",
+			"\t} catch (PDOException \\$e) {",
+			"\t\techo 'ERROR:<br>' . \\$e->getMessage();",
+			"\t}",
+			"}"
+		],
+		"description": "PDO UPDATE mit Prepared Statements"
+	},
+	"PHP PDO-DELETE-Prepared": {
+		"scope": "php",
+		"prefix": "ppdel",
+		"body": [
+			"if(!empty(\\$_POST)) {",
+			"\t\\$sql = 'DELETE $1 FROM $2",
+			"\tWHERE $3';",
+			"\t",
+			"\ttry {",
+			"\t\tif (\\$stmt = \\$pdo->prepare(\\$sql)) {",
+			"\t\t\t\\$stmt->bindParam( $4, $5);",
+			"",
+			"\t\t\tif( \\$stmt->execute() ) {",
+			"\t\t\t\techo '<p>Es wurden ' . \\$stmt->rowCount() . ' Datensätze gelöscht.</p>';",
+			"\t\t\t}",
+			"\t\t}",
+			"\t\\$stmt = NULL;",
+			"\t\\$pdo = NULL;",
+			"\t} catch (PDOException \\$e) {",
+			"\t\techo 'ERROR:<br>' . \\$e->getMessage();",
+			"\t}",
+			"}"
+		],
+		"description": "PDO DELETE mit Prepared Statements"
+	},
+	"Laravel Route Get Function": {
+        "scope": "php",
+        "prefix": "rgf",
+        "description": "Erzeugt ein Standard Route::get('', function)",
+        "body": ["Route::get( '$1', function() {", "\treturn $2;", "});"]
+    },
+    "Laravel Route Get Controller": {
+        "scope": "php",
+        "prefix": "rgc",
+        "description": "Erzeugt ein Standard Route::get('', [Controller]])",
+        "body": [
+            "Route::get( '${1:page}', [${2:Name}Controller::class, '${3:function}'] );"
+        ]
+    }
+}

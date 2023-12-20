@@ -13,11 +13,11 @@
     
     /* Variable unbekannt */
     // $x=4;
-    try { //versuche
-      if(! isset($x)) { // wenn $x nicht existiert
-        throw new Exception('Variable unbekannt'); // wirf ein neues Ausnahme-Objekt, übergib eine Zeichenkette
-        // und springe sofort zum catch-Teil
-        // folgende Anweisungen im try-Teil werden nicht mehr ausgeführt
+    try {                                               //versuche
+      if( ! isset($x) ) {                                 // wenn $x nicht existiert
+        throw new Exception('Variable unbekannt');      // wirf ein neues Ausnahme-Objekt, übergib eine Zeichenkette
+                                                          // und springe sofort zum catch-Teil
+                                                          // folgende Anweisungen im try-Teil werden nicht mehr ausgeführt
       }
       echo "Variable $x<br>";
     } catch (Exception $e) { // fang das geworfene Ausnahme-Objekt (als Parameter) auf
