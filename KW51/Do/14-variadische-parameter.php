@@ -5,16 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>variable und variadische Parameter</title>
 </head>
+
 <body>
   <h1>variable und variadische Parameter</h1>
 
   <h2>variable Parameter</h2>
-  <?php 
+  <?php
   
   function ausgabe( $name, $alter ) {
     // hier die Anweisungen eintragen
+    $mehr_argumente = func_num_args() ;
+    $num_params     = func_num_args() ;
+    //echo '<pre>' , print_r( $mehr_parameter , true ) , '</pre>' ;
   }
-
+  return "$name ist $alter Jahre alt" ;
   // normaler Aufruf
   echo '<p>' . ausgabe('Martin', 23, 'männlich', 'Motorrad', 4, false) . '</p>';
   
@@ -24,7 +28,7 @@
 
   <?php
   
-  /* 
+  /*
     variadische Parameter nutzen ein Array als Parameter-Definition
     Dazu muss der Name mit vorangestellten ... als Parameter übergeben werden
   */
