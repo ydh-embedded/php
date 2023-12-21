@@ -23,7 +23,7 @@
     $daten      = 'v04_Eingabe_Maske.csv'   ;
     $daten      = 'v04_Eingabe_Maske_BackUp.csv'   ;
     
-    $daten      = 'umfrage_daten.csv' && 'v04_Eingabe_Maske_BackUp.csv'      ;
+    // $daten      = 'umfrage_daten.csv' && 'v04_Eingabe_Maske_BackUp.csv'      ;
 
 
 

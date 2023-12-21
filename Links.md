@@ -10,4 +10,6 @@
 
 [MarkDown-Languages-prefix](https://www.w3schools.io/file/markdown-code-fence-blocks/#write-syntax-highlight-code-in-markdown)
 
+[Try & Catch Video](https://www.youtube.com/watch?v=7NLqdkpKVjk)
+
 [link](http://a.com)
