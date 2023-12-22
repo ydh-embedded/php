@@ -12,4 +12,6 @@
 
 [Try & Catch Video](https://www.youtube.com/watch?v=7NLqdkpKVjk)
 
+[PlugIns](https://code.urban-base.net/blog/mein-visual-studio-code-setup-erweiterungen-themes-und-einstellungen/)
+
 [link](http://a.com)
