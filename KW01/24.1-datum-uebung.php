@@ -60,9 +60,9 @@
 <h2>Aufgabe 1.5<br><code>date('d/m/Y' . ' - ' . 'h:i' )</code></h2>
 <p>
   <?php
-    $heute = date('d/m/Y' . ' - ' . 'h:i');
+    $heute = date('d/m/Y' . ' - ' . 'h:i A');
     $Zeitverschiebung = date (' P');
-    echo '<p>aktuelles Datum: ' . $heute  . ' AM/PM' . $Zeitverschiebung . ' Std.';
+    echo '<p>aktuelles Datum: ' . $heute . $Zeitverschiebung . ' Std.';
   ?>
 
 <h2>Aufgabe 1.6<br><code>$_SERVER['REQUEST_TIME']</code></h2>
@@ -81,9 +81,16 @@
     
     echo '<pre>', print_r( gettimeofday(false) ), '</pre>';
     
-  ?>
+    ?>
 
 
+
+<h2>Aufgabe 1.8<br><code>print_r( gettimeofday(true) )</code></h2>
+    <?php
+      $heute = date('U/h/r H:i A');
+      $Zeitverschiebung = date (' P');
+      echo '<p>aktuelles Datum: ' . $heute . $Zeitverschiebung . ' Std.';
+    ?>
 
 </body>
 </html>

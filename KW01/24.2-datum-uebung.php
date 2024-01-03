@@ -22,6 +22,10 @@ deutscher Sprache ausgeben</h4>
     echo '<p>aktueller Zeitstempel: ' . time() . '</p>';
     echo '<p>Heute ist der ' . date('d.m.Y', $heute) . '</p>';
     //echo '<p>Heute in Germany ist der ' . setlocale($heute_de) . '</p>';
+
+    setlocale(LC_ALL, 'deu');
+    echo strtr( );
+
   
   ?>
 
