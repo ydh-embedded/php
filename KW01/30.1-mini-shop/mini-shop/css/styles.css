@@ -1,0 +1,17 @@
+body {
+  font-family: sans-serif;
+}
+table {
+  border: 1px solid gray;
+  border-collapse: collapse;
+  background-color: #D5F0F5;
+}
+th, td {
+  border: 1px solid gray;
+}
+td:first-child {
+  text-align: center;
+}
+input[type="number"] {
+  text-align: right;
+}
