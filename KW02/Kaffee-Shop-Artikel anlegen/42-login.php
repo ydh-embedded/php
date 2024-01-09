@@ -21,22 +21,17 @@
 
     $sql = 'SELECT `users_name`, `users_password` FROM `tbl_users`
     WHERE `users_name`= :un';
-
     
     try {
-      // $row = db("SELECT * FROM tbl_users WHERE users_name = ?", $u_name)->fetch(PDO::FETCH_OBJ);
       if( $stmt = $pdo->prepare($sql) ) {
         $stmt->bindParam( ':un', $u_name );
-        echo '<pre>', var_dump( $u_name ), '</pre>';
-        echo '<pre>', var_dump( $stmt ), '</pre>';
         $stmt->execute();
-      //   // Prüfung ob Nutzername existiert
+        // Prüfung ob Nutzername existiert
         if( $stmt->rowCount() === 0 ) {
           echo '<p>Nutzername oder Passwort stimmen nicht überein!</p>';
         } else {
           $row = $stmt->fetch(PDO::FETCH_OBJ);
 
-     
           //  ! Verifizierung des Passwortes durch die Funktion password_verify()
 
           if( password_verify( $password, $row->users_password ) ) {
@@ -49,7 +44,7 @@
             echo '<p><a href="44-sichere-seite.php">sichere Seite</a></p>';
           } else {
             echo '<p>Nutzername oder Passwort stimmen nicht überein!</p>';
-          }        
+          }
         }
       }
     } catch (PDOException $e) {

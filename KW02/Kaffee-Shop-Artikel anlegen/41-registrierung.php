@@ -17,8 +17,8 @@
     define('DB_NAME', 'shop');
     require_once 'includes/pdo-connect.inc.php';
     require_once 'includes/functions.inc.php';
-    //?require_once 'PHPMailer-master/src/PHPMailer.php';
-    //?require_once 'PHPMailer-master/src/Exception.php';
+    require_once 'PHPMailer-master/src/PHPMailer.php';
+    require_once 'PHPMailer-master/src/Exception.php';
 
     /**
      * ? Für dieses Beispiel verzichten wir auf die Verifizierung der Daten, wie z.B. korrekte E-Mail-Synthax, Länge des Passwortes, verwendete Zeichen usw. 
@@ -37,17 +37,17 @@
     $mail_txt .= "Schön, dass Du Dich bei uns registriert hast.\r\n";
     $mail_txt .= "Du kannst Dich ab sofort mit deinem Benutzernamen $u_name und deinem gewählten Passwort bei uns anmelden.";
 
-    //?$mail = new PHPMailer();
-    //?$mail->From = $adminAddress;
-    //?$mail->FromName = 'Webmaster';
-    //?$mail->Subject = 'Registrierung erfolgreich';
-//?
-    //?$mail->Body = $mail_html;
-    //?$mail->AltBody = $mail_txt;
-//?
-    //?$mail->addAddress($email);
-    //?$mail->addReplyTo($adminAddress);
-//?
+    $mail = new PHPMailer();
+    $mail->From = $adminAddress;
+    $mail->FromName = 'Webmaster';
+    $mail->Subject = 'Registrierung erfolgreich';
+
+    $mail->Body = $mail_html;
+    $mail->AltBody = $mail_txt;
+
+    $mail->addAddress($email);
+    $mail->addReplyTo($adminAddress);
+
     // SQL-Anweisung und Datenbank-Abfrage durchführen
     // ppi
       $sql = 'INSERT INTO `tbl_users`
@@ -58,7 +58,7 @@
       (
         :un, :ue, :up
       )';
-      echo '123' ;
+      
       try {
         if ($stmt = $pdo->prepare($sql)) {
           $stmt->bindParam( ':un', $u_name );
@@ -73,12 +73,12 @@
             echo '<p>Sie wurden erfolgreich registriert.</p>';
             echo '<p><a href="42-login.php">Weiter zum Login</a></p>';
 
-            /* if( $mail->Send() ) {
+            if( $mail->Send() ) {
               echo "<p>Ein E-Mail wurde an die Mail-Adresse <b>$email</b> versendet.</p>";
             } else {
               echo "<p>Leider konnte kein Mail an die Mail-Adresse <b>$email</b> versendet werden.</p>";
-            }*/
-          } 
+            }
+          }
         }
       } catch (PDOException $e) {
         echo get_db_error($pdo, $sql, $e);

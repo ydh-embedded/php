@@ -52,6 +52,7 @@
           if( $stmt->execute()) {
             echo '<p>Der Artikel ' . $artic_name . ' wurde angelegt.</p>';
             echo '<p><a href="' . $_SERVER['SCRIPT_NAME'] . '">Neuen Artikel anlegen.</a></p>';
+            echo '<p><a href="40-shop.php">Zurück zur Übersicht.</a></p>';
           } else {
             echo '<p>Artikel konnte nicht angelegt werden.</p>';
           }
