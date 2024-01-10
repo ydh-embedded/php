@@ -1,0 +1,29 @@
+
+
+# robots.txt zu http://localhost
+
+User-agent: google
+
+Disallow:   /css/
+Disallow:   /js/
+Disallow:   /fonts/
+Disallow:   /webfonts/
+Disallow:   /DS_Shop/
+Disallow:   /DS_Shop/
+Disallow:   /Vorlage/
+
+
+# google Image Bot
+
+User-agent: Googlebot-Image
+Disallow:
+Allow:      /*
+#Allow:      /img/*.jpg
+
+# google Media Bot - Adsense
+
+User-agent: Mediapartners-Google*
+Disallow:
+Allow:      /*
+
+

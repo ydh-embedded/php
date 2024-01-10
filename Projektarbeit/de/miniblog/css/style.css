@@ -1,0 +1,101 @@
+
+
+
+    header {
+    background-color:    #282828;
+    padding: 20px;
+    text-align:             center;
+    }
+
+    header h1 {
+    margin: 0;
+    /* color: #584138; */
+    color:               #a35734;
+    }
+
+    .nav {
+    
+    flex-direction:            row;
+    }
+
+    div {
+        display:               flex;
+        flex-direction:  column-reverse;
+        flex-wrap:             wrap;
+        justify-content: space-around;
+    }
+
+    body {
+    font-family:    Arial, sans-serif;
+    font-family: 'Annie Use Your Telescope';font-size: 22px;
+    
+    background-color:    #181818;
+    color:               #a35734;
+    margin: 22;
+    padding: 11;
+    
+    -ms-flex-align:         center;
+    
+    }
+
+    .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    }
+
+    .blog-post {
+    background-color:    #282828;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    }
+
+    .blog-post h2 {
+    margin-bottom: 10px;
+    }
+
+    .blog-post p {
+    margin-bottom: 10px;
+    }
+
+    table,
+    th,
+    td {
+        border: 0.2px solid #282828;
+        color:              #584138;
+        background-color:   #1d1c1c;
+        margin:                0.3rem;
+        padding-bottom:          1rem;
+        padding-top:             1rem;
+        -ms-flex-align:        center;
+        text-align:            center;
+
+        }
+
+    th,
+    td {padding: 0.5rem;}
+
+    .footer {
+    background-color:    #282828;
+    padding: 20px;
+    text-align:             center;
+    display:                  flex;
+    
+    }
+
+    .login-class {
+        text-align:         center;
+        color-scheme:    #2f2f2f;
+    }
+
+    input {
+        background-color: #282828;
+        
+    }
+
+    a {
+        color: rgba(var(--bs-nav-link-color),var(--bs-link-opacity,11));
+
+        
+    }
