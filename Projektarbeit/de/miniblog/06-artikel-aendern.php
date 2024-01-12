@@ -9,26 +9,9 @@
     <!-- Titel
     ============================================================================================= -->
     <title>Post ändern</title>
-
-
-    <!-- Icon
+    <!-- Meta Information
     ============================================================================================= -->
-    <link rel="icon" type="images/x-icon" href="https://www.w3docs.com/favicon.ico" />
-    <!-- fonts
-    ============================================================================================= -->
-    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
-    <!-- Bootstrap
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Web-Fonts
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- Style-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style-Buttons-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style_buttons.css">
+    <?php    require_once 'includes/meta.inc.php';    ?>
 </head>
 
 <body>
@@ -40,7 +23,7 @@
     // wenn $_GET leer ist zurück zur Übersicht
     $host  = $_SERVER['HTTP_HOST'];
     $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    $extra = 'index.php';
+    $extra = '02-login.php';
     header("Location: http://$host$uri/$extra");
     exit;
   }
@@ -59,33 +42,33 @@
     //$sql = 'UPDATE `tbl_articles`
       $sql = 'UPDATE `tbl_posts`
             SET
-              `posts_name` = :pn,
-              `posts_short_desc` = :psd,
-              `posts_long_desc` = :pld,
+              `posts_header`  = :pn,
+              `posts_content` = :psd,
+              `posts_image`   = :pld,
               `posts_categ_id_ref` = :pc,
-              `posts_price` = :pp
+              `post_users_id_ref`   = :pp
             WHERE `posts_id` = ' . intval($posts_id);
 
       // Variablen der Formularfelder erzeugen
-      $posts_name         = $_POST['posts_name'];
-      $posts_short_desc   = $_POST['posts_short_desc'];
-      $posts_long_desc    = $_POST['posts_long_desc'];
+      $posts_header         = $_POST['posts_header'];
+      $posts_content        = $_POST['posts_content'];
+      $posts_image          = $_POST['posts_image'];
 
       // Formular-Zeichenketten in numerische Typen umwandeln
-      $posts_categ_id_ref = intval($_POST['posts_categ_id_ref']);
-      $posts_price = floatval($_POST['posts_price']);
+      $posts_categ_id_ref   = intval($_POST['posts_categ_id_ref']);
+      $posts_users_id_ref          = floatval($_POST['posts_users_id_ref']);
 
       try {
         if ($stmt = $pdo->prepare($sql)) {
 
-          $stmt->bindParam(':pn' , $posts_name);
-          $stmt->bindParam(':psd', $posts_short_desc);
-          $stmt->bindParam(':pld', $posts_long_desc);
+          $stmt->bindParam(':pn' , $posts_header);
+          $stmt->bindParam(':psd', $posts_content);
+          $stmt->bindParam(':pld', $posts_image);
           $stmt->bindParam(':pc' , $posts_categ_id_ref);
-          $stmt->bindParam(':pp' , $posts_price);
+          $stmt->bindParam(':pp' , $posts_users_id_ref);
 
           if ($stmt->execute()) {
-            echo '<p>Der Post ' . $posts_name . ' wurde geändert.</p>';
+            echo '<p>Der Post ' . $posts_header . ' wurde geändert.</p>';
             echo '<p><a href="index.php">Zurück zur Übersicht.</a></p>';
           } else {
             echo '<p>Post konnte nicht geändert werden.</p>';
@@ -105,7 +88,7 @@
 
     } else {
       // wenn $_POST leer  ist, Abfrage der Kategorien und Ausgabe des Formulars
-      $sql = 'SELECT `posts_id`, `posts_name`, `posts_short_desc`, `posts_long_desc`, `posts_categ_id_ref`, `posts_price`
+      $sql = 'SELECT `posts_id`, `posts_header`, `posts_content`, `posts_image`, `posts_categ_id_ref`, `posts_users_id_ref`
               FROM `tbl_posts`
               WHERE `posts_id` = ?';
       try {
@@ -117,11 +100,11 @@
                 exit('<p>kein Post gefunden</p>');
               } else {
                 $row = $stmt->fetch(PDO::FETCH_OBJ);
-                $o_posts_name = $row->posts_name;
-                $o_posts_short_desc = $row->posts_short_desc;
-                $o_posts_long_desc = $row->posts_long_desc;
+                $o_posts_header = $row->posts_header;
+                $o_posts_content = $row->posts_content;
+                $o_posts_image = $row->posts_image;
                 $o_posts_categ_id_ref = $row->posts_categ_id_ref;
-                $o_posts_price = $row->posts_price;
+                $o_post_users_id_ref = $row->post_users_id_ref;
               }
             }
           } catch (PDOException $e) {
@@ -139,17 +122,17 @@
 
         <p>
           Post-Name:<br>
-          <input type="text" name="posts_name" value="<?= $o_posts_name ?>">
+          <input type="text" name="posts_header" value="<?= $o_posts_header ?>">
         </p>
 
         <p>
           ausführliche Beschreibung<br>
-          <input type="text" name="posts_long_desc" value="<?= $o_posts_long_desc ?>">
+          <input type="text" name="posts_image" value="<?= $o_posts_image ?>">
         </p>
 
         <p>
           Kurzbeschreibung:<br>
-          <input type="text" name="posts_short_desc" value="<?= $o_posts_short_desc ?>">
+          <input type="text" name="posts_content" value="<?= $o_posts_content ?>">
         </p>
 
         <p>
@@ -192,7 +175,7 @@
 
         <p>
           Preis:<br>
-          <input type="text" name="posts_price" value="<?= $o_posts_price ?>">
+          <input type="text" name="post_users_id_ref" value="<?= $o_post_users_id_ref ?>">
         </p>
 
         <p><input type="submit" value="Speichern"></p>
@@ -207,22 +190,10 @@
   ?>
   </div>
 
-<footer>
-
-<div
-    class="footer">
-    <p>&copy; 2024 MiniBlog. Alle Angaben ohne Gewähr.</p>
-    <p>
-        <?php
-            
-            
-        ?>
-    </p>
-
-</div>
-
-
+  <footer>
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
+
 </body>
 
 </html>

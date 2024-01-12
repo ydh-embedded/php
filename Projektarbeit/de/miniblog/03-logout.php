@@ -8,58 +8,35 @@
     <!-- Titel
     ============================================================================================= -->
     <title>Logout</title>
-
-    <!-- Icon
+    <!-- Meta Information
     ============================================================================================= -->
-    <link rel="icon" type="images/x-icon" href="https://www.w3docs.com/favicon.ico" />
-    <!-- fonts
-    ============================================================================================= -->
-    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
-    <!-- Bootstrap
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Web-Fonts
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- Style-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style-Buttons-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style_buttons.css">
+    <?php    require_once 'includes/meta.inc.php';    ?>
 </head>
 <body>
+
 <header> <h1>Logout</h1> </header>
+
 <div class="container">
-  
-  <?php
+  <div class="block">
+
+    <?php
     
-  $_SESSION = array();
-  if( session_destroy() ) {
-    echo '<p>Sie wurden ausgeloggt.</p>';
-    echo '<p>Zum erneuten Anmelden <a href="02-login.php">loggen Sie sich hier ein</a>.</p>';
-  } else {
-    echo '<p>Das Ausloggen konnte nicht ausgeführt werden.</p>';
-  }
+    $_SESSION = array();
+    if( session_destroy() ) {
+      echo '<h3>Sie wurden <b>ausgeloggt</b>. Zum erneuten Anmelden <a href="02-login.php">loggen Sie sich hier ein</h3>';
+      
+    } else {
+      echo '<p>Das Ausloggen konnte nicht ausgeführt werden.</p>';
+    }
     
-  ?>
+    ?>
+
+  </div>
 </div>
 
 <footer>
-
-<div
-    class="footer">
-    <p>&copy; 2024 MiniBlog. Alle Angaben ohne Gewähr.</p>
-    <p>
-        <?php
-            
-            
-        ?>
-    </p>
-
-</div>
-
-
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
+
 </body>
 </html>

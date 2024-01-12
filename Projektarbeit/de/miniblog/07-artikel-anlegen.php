@@ -1,6 +1,4 @@
 <?php session_start(); ?>
-
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -11,81 +9,68 @@
     <!-- Titel
     ============================================================================================= -->
     <title>Post anlegen</title>
-
-
-    <!-- Icon
+    <!-- Meta Information
     ============================================================================================= -->
-    <link rel="icon" type="images/x-icon" href="https://www.w3docs.com/favicon.ico" />
-    <!-- fonts
-    ============================================================================================= -->
-    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
-    <!-- Bootstrap
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Web-Fonts
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- Style-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style-Buttons-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style_buttons.css">
+    <?php    require_once 'includes/meta.inc.php';    ?>
 </head>
 
 <body>
 <header> <h1>Post anlegen</h1> </header>
+
+
 <div class="container">
 
   
 
   <?php
 
-  if (isset($_SESSION['users_name']) && ($_SESSION['is_logged_in'] === true)) : ?>
+  if (isset($_SESSION['users_lastname']) && ($_SESSION['is_logged_in'] === true)) : ?>
 
     <?php
-    define('DB_NAME', 'shop');
-    require_once 'includes/pdo-connect.inc.php';
-    require_once 'includes/functions.inc.php';
+    
+    require_once 'includes/init.inc.php';
+
     
     if( ! empty($_POST) ) {
       $sql = 'INSERT INTO `tbl_posts`
       (
-        `posts_name`,
-        `posts_short_desc`,
-        `posts_long_desc`,
         `posts_categ_id_ref`,
-        `posts_price`
+        `posts_header`      ,
+        `posts_content`     ,
+        `posts_users_id_ref`,
+        `posts_image`
       )
+
       VALUES
       (
-        :pn,
-        :psd,
-        :pld,
+        :pcid,
+        :ph,
         :pc,
-        :pp
+        :puid,
+        :pi
       )';
 
       // Variablen der Formularfelder erzeugen
-      $posts_name       = $_POST['posts_name'];
-      $posts_short_desc = $_POST['posts_short_desc'];
-      $posts_long_desc  = $_POST['posts_long_desc'];
+      $posts_header       = $_POST['posts_header'];
+      $posts_content      = $_POST['posts_content'];
+      $posts_image        = $_POST['posts_image'];
       // Formular-Zeichenketten in numerische Typen umwandeln
-      $posts_categ_id_ref = intval($_POST['posts_categ_id_ref']);
-      $posts_price        = floatval($_POST['posts_price']);
+      $posts_categ_id_ref        = intval($_POST['posts_categ_id_ref']);
+      $posts_users_id_ref        = intval($_POST['posts_users_id_ref']);
+   /* $posts_users_id_ref        = floatval($_POST['posts_users_id_ref']); */
 
       try {
         if( $stmt = $pdo->prepare($sql) ) {
-          $stmt->bindParam(':pn', $posts_name);
-          $stmt->bindParam(':psd', $posts_short_desc);
-          $stmt->bindParam(':pld', $posts_long_desc);
-          $stmt->bindParam(':pc', $posts_categ_id_ref);
-          $stmt->bindParam(':pp', $posts_price);
+          $stmt->bindParam(':ph'    , $posts_header)       ;
+          $stmt->bindParam(':pc'    , $posts_content)      ;
+          $stmt->bindParam(':pi'    , $posts_image)        ;
+          $stmt->bindParam(':pcid'  , $posts_categ_id_ref) ;
+          $stmt->bindParam(':puid'  , $posts_users_id_ref) ;
 
           if( $stmt->execute()) {
-            echo '<p>Ihr Post ' . $posts_name . ' wurde angelegt.</p>';
-            echo '<p><a href="' . $_SERVER['SCRIPT_NAME'] . '">Neuen Post anlegen.</a></p>';
-            echo '<p><a href="index.php">Zurück zur Übersicht.</a></p>';
+            /* echo '<p><a href="' . $_SERVER['SCRIPT_NAME'] . '">Neuen Post anlegen.</a></p>'; */
+            echo '<p><a href="11-artikel.php">Zur Übersicht.</a></p>';
+            echo '<p>Ihr Blog mit der Bezeichnung ' . $posts_header . ' wurde angelegt.</p>';
           } else {
             echo '<p>Der Post konnte nicht angelegt werden.</p>';
           }
@@ -105,29 +90,33 @@
 
       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
+      <div class="PostHeader">
+        
         <p>
-          Post-Name:<br>
-          <input type="text" name="posts_name">
+          Post-Header:<br>
+          <input type="text" name="posts_header" style="width: 690px"><br>
+        </p>
+        
+      </div>
+
+      <div  class="PostBody">
+        <p>
+          Post-Inhalt:<br>
+          <input type="text" style="width:690px ; height:400px" name="posts_content"><br>
+          
         </p>
 
         <p>
-          ausführliche Bezeichnung<br>
-          <input type="text" name="posts_long_desc">
+          Post-Image-Link<br>
+          <input type="text" name="posts_image"><br>
         </p>
-
+        
         <p>
-          Kurzbezeichung:<br>
-          <input type="text" name="posts_short_desc">
-        </p>
-
-        <p>
-          Kategorie:<br>
+          Kategorie-ID<br>
           <select name="posts_categ_id_ref">
             <?php
-
             // Ausgabe der Kategorien
-
-
+         /* $sql = 'SELECT `categ_id`, `categ_name` FROM `tbl_categories`'; */
             $sql = 'SELECT `categ_id`, `categ_name` FROM `tbl_categories`';
 
             try {
@@ -156,38 +145,30 @@
         </p>
 
         <p>
-          Preis:<br>
-          <input type="text" name="posts_price">
+          Post-User-ID<br>
+          <input type="text" name="posts_users_id_ref">
         </p>
 
-        <p><input type="submit" value="Speichern"></p>
+        <p>
+          <br>
+          <input type="submit" value="Speichern">
+        </p>
 
+      </div>
       </form>
     <?php } ?>
-
-  <?php else : ?>
+    
+    <?php else : ?>
     <p>Um einen Post anlegen zu können müssen Sie eingeloggt sein: <a href="02-login.php">zum Login</a>.</p>
   <?php endif;
 
-  ?>
+?>
   </div>
 
-<footer>
-
-<div
-    class="footer">
-    <p>&copy; 2024 MiniBlog. Alle Angaben ohne Gewähr.</p>
-    <p>
-        <?php
-            
-            
-        ?>
-    </p>
-
-</div>
-
-
+  <footer>
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
+
 </body>
 
 </html>

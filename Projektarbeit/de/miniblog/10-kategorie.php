@@ -1,7 +1,6 @@
+<?php session_start(); ?>
 <?php
-define('DB_NAME', 'miniblog');
-require_once 'includes/pdo-connect.inc.php';
-require_once 'includes/functions.inc.php';
+    require_once 'includes/init.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -13,37 +12,14 @@ require_once 'includes/functions.inc.php';
     <!-- Titel
     ============================================================================================= -->
     <title>miniblog</title>
-    <!-- Icon
+    <!-- Meta Information
     ============================================================================================= -->
-    <link rel="icon" type="images/x-icon" href="https://www.w3docs.com/favicon.ico" />
-    <!-- fonts
-    ============================================================================================= -->
-    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
-    <!-- Bootstrap
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Web-Fonts
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- Style-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style-Buttons-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style_buttons.css">
+    <?php    require_once 'includes/meta.inc.php';    ?>
 
   <style>
 
-    table,
-    th,
-    td {
-      border: 1px solid gray;
-    }
 
-    th,
-    td {
-      padding: 5px;
-    }
+
   </style>
 
 </head>
@@ -70,12 +46,12 @@ require_once 'includes/functions.inc.php';
     <?php
 
     $sql = 'SELECT
-              `categ_id`,
-              `categ_name`,
-              `categ_desc`
-              `categ_view_count`
-              `categ_post_count`
-              `categ_last_post`
+              `categ_id`          ,
+              `categ_name`        ,
+              `categ_desc`        ,
+              `categ_view_count`  ,
+              `categ_post_count`  ,
+              `categ_lastpost`
 
             FROM `tbl_categories`';
 
@@ -85,14 +61,21 @@ require_once 'includes/functions.inc.php';
           echo '<p>Keine Datensätze gefunden.</p>';
         } else {
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+
+          <div class="TableBody">
             <tr>
-              <td><?= $row['categ_id']; ?></td>
+
+              <td><code><?= $row['categ_id']; ?></code></td>
               <td><?= $row['categ_name']; ?></td>
               <td><?= $row['categ_desc']; ?></td>
-              <td><a href="08-kategorie-aendern.php?c=<?= $row['categ_id']; ?>">Thema Ändern</a></td>
-
+              <td><?= $row['categ_view_count']; ?></td>
+              <td><?= $row['categ_post_count']; ?></td>
+              <td><?= $row['categ_lastpost']; ?></td>
+              
             </tr>
-    <?php }
+          </div>
+
+            <?php }
         }
       }
       $stmt = NULL;
@@ -100,30 +83,20 @@ require_once 'includes/functions.inc.php';
     } catch (PDOException $e) {
       echo 'ERROR:<br>' . $e->getMessage();
     }
-
+    
     ?>
   </table>
-  <p><a href="09-kategorie-anlegen.php">Neues Thema</a></p>
-  <p><a href="index.php">Zur Blog-Übersicht</a></p>
+
+        <p><a href="09-kategorie-anlegen.php">Neues Thema anlegen</a></p>
+        <p><a href="07-artikel-anlegen.php">Neuen Blogpost anlegen</a></p>
+  <!--  <p><a href="08-kategorie-aendern.php?">Thema Ändern</a></p> -->
+
 
   </div>
 
-<footer>
-
-<div
-    class="footer">
-    <p>&copy; 2024 MiniBlog. Alle Angaben ohne Gewähr.</p>
-    <p>
-        <?php
-            
-            
-        ?>
-    </p>
-
-</div>
-
-
+  <footer>
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
-</body>
 
+</body>
 </html>
