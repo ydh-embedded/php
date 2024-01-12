@@ -6,11 +6,12 @@ User-agent: google
 
 Disallow:   /css/
 Disallow:   /js/
+Disallow:   /db/
 Disallow:   /fonts/
 Disallow:   /webfonts/
-Disallow:   /DS_Shop/
-Disallow:   /DS_Shop/
-Disallow:   /Vorlage/
+Disallow:   /includes/
+Disallow:   /PHPMailer-master/
+
 
 
 # google Image Bot

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -7,26 +8,9 @@
     <!-- Titel
     ============================================================================================= -->
     <title>Registrierung</title>
-
-
-    <!-- Icon
+    <!-- Meta Information
     ============================================================================================= -->
-    <link rel="icon" type="images/x-icon" href="https://www.w3docs.com/favicon.ico" />
-    <!-- fonts
-    ============================================================================================= -->
-    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
-    <!-- Bootstrap
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Web-Fonts
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- Style-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style-Buttons-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style_buttons.css">
+    <?php    require_once 'includes/meta.inc.php';    ?>
 </head>
 <body>
   <header> <h1>Registrierung</h1> </header>
@@ -78,7 +62,7 @@
     // ppi
       $sql = 'INSERT INTO `tbl_users`
       (
-        `users_name`,`users_email`, `users_password`
+        `users_lastname`,`users_email`, `users_password`
       )
       VALUES
       (
@@ -96,14 +80,15 @@
           $stmt->bindParam(':up', $password_hash);
     
           if( $stmt->execute() ) {
-            echo '<p>Sie wurden erfolgreich registriert.</p>';
-            echo '<p><a href="02-login.php">Weiter zum Login</a></p>';
-
+            echo '<p>Sie wurden erfolgreich registriert.  <a href="02-login.php">Weiter zum <b>Login</b></a></p>';
+            
             if( $mail->Send() ) {
               echo "<p>Ein E-Mail wurde an die Mail-Adresse <b>$email</b> versendet.</p>";
             } else {
-              echo "<p>Leider konnte kein Mail an die Mail-Adresse <b>$email</b> versendet werden.</p>";
+              echo "<p>Es konnte wegen defektem Mail-Server keine Mail an folgende Adresse <b>$email</b><br>
+              versendet werden. Bitte wenden Sie sich an den Admin.</p>";
             }
+            echo '<p></p>';
           }
         }
       } catch (PDOException $e) {
@@ -120,39 +105,39 @@
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <p>
       <label for="u_name">Benutzername</label><br>
-      <input type="text" name="u_name" id="u_name">
+      <input type="text" name="u_name" id="u_name" style="width:750px ; height:none">
     </p>
 
     <p>
       <label for="email">E-Mail-Adresse</label><br>
-      <input type="email" name="email" id="email">
+      <input type="email" name="email" id="email" style="width:750px ; height:none">
     </p>
 
     <p>
       <label for="password">Passwort</label><br>
-      <input type="password" name="password" id="password">
+      <input type="password" name="password" id="password" style="width:750px ; height:none">
     </p>
 
     <p>
       <input type="submit" value="registrieren">
     </p>
+
+
+
   </form>
 </div>
+
+
 <footer>
-
-<div
-    class="footer">
-    <p>&copy; 2024 MiniBlog. Alle Angaben ohne Gewähr.</p>
-    <p>
-        <?php
-            
-            
-        ?>
-    </p>
-
-</div>
-
-
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
+
+
+
+
+
+
+
+
 </body>
 </html>

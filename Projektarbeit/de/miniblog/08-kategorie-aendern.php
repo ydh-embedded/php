@@ -12,26 +12,9 @@
     <!-- Titel
     ============================================================================================= -->
     <title>Thema ändern</title>
-
-
-    <!-- Icon
+    <!-- Meta Information
     ============================================================================================= -->
-    <link rel="icon" type="images/x-icon" href="https://www.w3docs.com/favicon.ico" />
-    <!-- fonts
-    ============================================================================================= -->
-    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
-    <!-- Bootstrap
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Web-Fonts
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- Style-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style-Buttons-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style_buttons.css">
+    <?php    require_once 'includes/meta.inc.php';    ?>
 </head>
 
 <body>
@@ -43,7 +26,7 @@
     // wenn $_GET leer ist zurück zur Übersicht
     $host  = $_SERVER['HTTP_HOST'];
     $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    $extra = '10-kategorie.php';
+    $extra = '09-kategorie-anlegen.php';
     
     header("Location: http://$host$uri/$extra");
     exit;
@@ -52,15 +35,15 @@
   if (isset($_SESSION['users_name']) && ($_SESSION['is_logged_in'] === true)) : ?>
 
     <?php
-    define('DB_NAME', 'shop');
-    require_once 'includes/pdo-connect.inc.php';
-    require_once 'includes/functions.inc.php';
+
+    require_once 'includes/init.inc.php';
+
     $categ_id = $_GET['c'];
 
     if (!empty($_POST)) {
       // wenn $_POST nicht leer ist: ändern des DB-Eintrags mit dem Inhalt der Formular-Elemente
-      $sql = 'UPDATE `tbl_categories` 
-            SET 
+      $sql = 'UPDATE `tbl_categories`
+            SET
               `categ_name` = :cn,
               `categ_desc` = :cd
             WHERE `categ_id` = ' . intval($categ_id);
@@ -142,22 +125,9 @@
   ?>
   </div>
 
-<footer>
-
-<div
-    class="footer">
-    <p>&copy; 2024 MiniBlog. Alle Angaben ohne Gewähr.</p>
-    <p>
-        <?php
-            
-            
-        ?>
-    </p>
-
-</div>
-
-
+  <footer>
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
-</body>
 
+</body>
 </html>
