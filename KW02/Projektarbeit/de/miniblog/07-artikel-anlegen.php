@@ -1,6 +1,4 @@
 <?php session_start(); ?>
-
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -11,26 +9,9 @@
     <!-- Titel
     ============================================================================================= -->
     <title>Post anlegen</title>
-
-
-    <!-- Icon
+    <!-- Meta Information
     ============================================================================================= -->
-    <link rel="icon" type="images/x-icon" href="https://www.w3docs.com/favicon.ico" />
-    <!-- fonts
-    ============================================================================================= -->
-    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
-    <!-- Bootstrap
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Web-Fonts
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- Style-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style-Buttons-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style_buttons.css">
+    <?php    require_once 'includes/meta.inc.php';    ?>
 </head>
 
 <body>
@@ -53,26 +34,20 @@
     if( ! empty($_POST) ) {
       $sql = 'INSERT INTO `tbl_posts`
       (
-        `posts_users_id_ref`,
         `posts_categ_id_ref`,
         `posts_header`      ,
         `posts_content`     ,
+        `posts_users_id_ref`,
         `posts_image`
       )
-/*       (
-        `posts_name`,
-        `posts_short_desc`,
-        `posts_long_desc`,
-        `posts_categ_id_ref`,
-        `posts_price`
-      ) */
+
       VALUES
       (
-        :pn,
-        :psd,
-        :pld,
+        :pcid,
+        :ph,
         :pc,
-        :pp
+        :puid,
+        :pi
       )';
 
       // Variablen der Formularfelder erzeugen
@@ -86,16 +61,16 @@
 
       try {
         if( $stmt = $pdo->prepare($sql) ) {
-          $stmt->bindParam(':pn' , $posts_header)       ;
-          $stmt->bindParam(':psd', $posts_content)      ;
-          $stmt->bindParam(':pld', $posts_image)        ;
-          $stmt->bindParam(':pc' , $posts_categ_id_ref) ;
-          $stmt->bindParam(':pp' , $posts_users_id_ref) ;
+          $stmt->bindParam(':ph'    , $posts_header)       ;
+          $stmt->bindParam(':pc'    , $posts_content)      ;
+          $stmt->bindParam(':pi'    , $posts_image)        ;
+          $stmt->bindParam(':pcid'  , $posts_categ_id_ref) ;
+          $stmt->bindParam(':puid'  , $posts_users_id_ref) ;
 
           if( $stmt->execute()) {
             /* echo '<p><a href="' . $_SERVER['SCRIPT_NAME'] . '">Neuen Post anlegen.</a></p>'; */
             echo '<p><a href="11-artikel.php">Zur Übersicht.</a></p>';
-            echo '<p>Ihr ' . $posts_content . ' wurde angelegt.</p>';
+            echo '<p>Ihr Blog mit der Bezeichnung ' . $posts_header . ' wurde angelegt.</p>';
           } else {
             echo '<p>Der Post konnte nicht angelegt werden.</p>';
           }
@@ -191,34 +166,9 @@
   </div>
 
   <footer>
-
-<div
-    class="footer">
-
-
-    <div class="nav">
-
-        <a href="01-registrierung.php"    >__Registrieren</a>
-        <a href="02-login.php"            >__Login</a>
-        <a href="03-logout.php"           >__Logout</a>
-        <!-- <a href="04-sichere-seite.php"    ></a> -->
-        <a href="05-mail.php"             >__Mail</a>
-        <!-- <a href="06-artikel-aendern.php"  >__Post ändern</a> -->
-        <!-- <a href="07-artikel-anlegen.php"  >__Post anlegen</a> -->
-        <!-- <a href="08-kategorie-aendern.php">__Thema ändern</a> -->
-        <!-- <a href="09-kategorie-anlegen.php">__Thema anlegen</a> -->
-        <a href="10-kategorie.php"        >__Thema bearbeiten</a>
-        <a href="11-artikel.php"          >__Post Übersicht</a>
-        <a href="99-cookies.php"          >__Datenschutz-Bestimmung</a>
-
-    </div>
-
-    <p>&copy; 2024 MiniBlog. Alle Angaben ohne Gewähr.</p>
-
-</div>
-
-
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
+
 </body>
 
 </html>

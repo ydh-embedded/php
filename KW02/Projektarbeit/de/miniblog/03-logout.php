@@ -8,25 +8,9 @@
     <!-- Titel
     ============================================================================================= -->
     <title>Logout</title>
-
-    <!-- Icon
+    <!-- Meta Information
     ============================================================================================= -->
-    <link rel="icon" type="images/x-icon" href="https://www.w3docs.com/favicon.ico" />
-    <!-- fonts
-    ============================================================================================= -->
-    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
-    <!-- Bootstrap
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Web-Fonts
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- Style-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style-Buttons-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style_buttons.css">
+    <?php    require_once 'includes/meta.inc.php';    ?>
 </head>
 <body>
 
@@ -51,20 +35,8 @@
 </div>
 
 <footer>
-
-<div
-    class="footer">
-    <p>&copy; 2024 MiniBlog. Alle Angaben ohne Gewähr.</p>
-    <p>
-        <?php
-            
-            
-        ?>
-    </p>
-
-</div>
-
-
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
+
 </body>
 </html>
