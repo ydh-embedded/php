@@ -36,28 +36,24 @@
 </header>
 
 <div class="container">
+  <div class="block">
     <div class="nav">
-          <div class="button">
+        
 
-<!--        <a href="08-kategorie-aendern.php">Thema ändern                 </a>
-            <a href="09-kategorie-anlegen.php">Thema anlegen                </a> -->
-            <a href="10-kategorie.php"        ><h2>  Themen Übersicht  </h2></a>
-
-          </div>
+        <!--        <a href="08-kategorie-aendern.php">Thema ändern                 </a>
+        <a href="09-kategorie-anlegen.php">Thema anlegen                </a> -->
+        <a href="11-artikel.php" ><h2>  Blog-Übersicht  </h2></a>
+        <p></p>
+        
     </div>
-
   </div>
 </div>
+
+
+
 <footer>
-
-<?php
-
-
-  require_once 'includes/footer.inc.php';
-
-?>
-
-
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
+
 </body>
 </html>

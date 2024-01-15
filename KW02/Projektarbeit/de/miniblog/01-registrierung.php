@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -7,26 +8,9 @@
     <!-- Titel
     ============================================================================================= -->
     <title>Registrierung</title>
-
-
-    <!-- Icon
+    <!-- Meta Information
     ============================================================================================= -->
-    <link rel="icon" type="images/x-icon" href="https://www.w3docs.com/favicon.ico" />
-    <!-- fonts
-    ============================================================================================= -->
-    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
-    <!-- Bootstrap
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Web-Fonts
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- Style-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style-Buttons-CSS
-    ============================================================================================= -->
-    <link rel="stylesheet" href="css/style_buttons.css">
+    <?php    require_once 'includes/meta.inc.php';    ?>
 </head>
 <body>
   <header> <h1>Registrierung</h1> </header>
@@ -96,14 +80,15 @@
           $stmt->bindParam(':up', $password_hash);
     
           if( $stmt->execute() ) {
-            echo '<p><a href="02-login.php">Weiter zum Login</a></p>';
+            echo '<p>Sie wurden erfolgreich registriert.  <a href="02-login.php">Weiter zum <b>Login</b></a></p>';
             
             if( $mail->Send() ) {
               echo "<p>Ein E-Mail wurde an die Mail-Adresse <b>$email</b> versendet.</p>";
             } else {
-              echo "<p>Leider konnte kein Mail an die Mail-Adresse <b>$email</b> versendet werden.</p>";
+              echo "<p>Es konnte wegen defektem Mail-Server keine Mail an folgende Adresse <b>$email</b><br>
+              versendet werden. Bitte wenden Sie sich an den Admin.</p>";
             }
-            echo '<p>Sie wurden erfolgreich registriert.</p>';
+            echo '<p></p>';
           }
         }
       } catch (PDOException $e) {
@@ -136,38 +121,15 @@
     <p>
       <input type="submit" value="registrieren">
     </p>
+
+
+
   </form>
 </div>
 
 
 <footer>
-
-<div
-    class="footer">
-
-
-    <div class="nav">
-
-        <a href="01-registrierung.php"    >__Registrieren</a>
-        <a href="02-login.php"            >__Login</a>
-        <a href="03-logout.php"           >__Logout</a>
-        <!-- <a href="04-sichere-seite.php"    ></a> -->
-        <a href="05-mail.php"             >__Mail</a>
-        <!-- <a href="06-artikel-aendern.php"  >__Post ändern</a> -->
-        <!-- <a href="07-artikel-anlegen.php"  >__Post anlegen</a> -->
-        <!-- <a href="08-kategorie-aendern.php">__Thema ändern</a> -->
-        <!-- <a href="09-kategorie-anlegen.php">__Thema anlegen</a> -->
-        <a href="10-kategorie.php"        >__Themen_Übersicht</a>
-        <a href="11-artikel.php"          >__Post_Übersicht</a>
-        <a href="99-cookies.php"          >__Datenschutz_Bestimmung</a>
-
-    </div>
-
-    <p>&copy; 2024 MiniBlog. Alle Angaben ohne Gewähr.</p>
-
-</div>
-
-
+<?php     require_once 'includes/footer.inc.php';   ?>
 </footer>
 
 
