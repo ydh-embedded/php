@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,7 @@ Route::get('/', function () {
 });
 Route::get('card', function () {
     return view('card-child-1');
+});
+Route::get('/users', function () {
+    return $users = DB::table('users')->get();
 });
