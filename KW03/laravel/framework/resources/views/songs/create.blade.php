@@ -31,6 +31,16 @@
 
 </div>
 
+<div>
+
+    <label   for="label">Label</label>
+    <select name="labels_id_ref" id="label">
+        @foreach ($labels as $label)<option value="{{$label->id}}">{{$label->name}}</option>
+        @endforeach
+    </select>
+
+
+</div>
 
 <div>
     <input type="submit" value="eintragen">

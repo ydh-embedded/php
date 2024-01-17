@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SongsController extends Controller
 {
@@ -12,7 +13,11 @@ class SongsController extends Controller
      */
     public function index()
     {
-        $songs = Song::all();
+        //$songs = Song::all();
+        $songs   = Song::join('labels','labels_id_ref','=','labels.id')
+            ->select('songs.id','songs.title','songs.band','labels.name')
+            ->orderBy('songs.title','asc')
+            ->get();
         return view('songs.index',['songs' => $songs])          ;   //
     }
 
@@ -21,9 +26,8 @@ class SongsController extends Controller
      */
     public function create()
     {
-
-        return view ('songs.create');
-        //
+        $labels = DB::table('labels')->select('id','name',)->get();
+        return view ('songs.create',['labels'=> $labels]);
     }
 
     /**
@@ -33,11 +37,12 @@ class SongsController extends Controller
     {
         $song = new Song(); //return 'store' ; //
 
-        $validatedData = $request->validate(['title'=>'required|min:2','band'=> 'required']);       //wir verifizieren
+        $validatedData = $request->validate(['title'=>'required|min:2','band'=> 'required' , 'labels_id_ref'=> 'required']);       //wir verifizieren
 
 
-        $song->title = $validatedData   ['title']       ;
-        $song->band  = $validatedData   ['band']        ;
+        $song->title            = $validatedData   ['title']        ;
+        $song->band             = $validatedData   ['band']         ;
+        $song->labels_id_ref    = $validatedData   ['labels_id_ref'];
 
         $song->save();                          //mit save speichern wir den input
         return redirect('/songs');              //mit redirection leiten wir die seite weiter
@@ -49,7 +54,13 @@ class SongsController extends Controller
      */
     public function show(string $id)
     {
-        $song = Song::findOrFail($id);  //
+          //$song = Song::findOrFail($id);
+        $song   = Song::join('labels','labels_id_ref','=','labels.id')
+        ->select ( 'songs.title','songs.band','labels.name')
+        ->where  ( 'songs.id','=', $id )
+        ->orderBy( 'songs.title','asc' )
+
+        ->firstOrFail();
         return view ('songs.show', compact ('song') );
     }
     
@@ -58,8 +69,10 @@ class SongsController extends Controller
      */
     public function edit(string $id)
     {
-        $song = Song::findOrFail($id);  //
-        return view('songs.edit') ;
+        $song   = Song::findOrFail($id);  //
+        $labels =   DB::table('labels')->select('id','name',)->get();
+
+        return view('songs.edit', ['song'=>$song , 'labels' =>$labels]) ;
     }
 
     /**
@@ -69,9 +82,10 @@ class SongsController extends Controller
     {
         $song = Song::find($id);
         
-        $validatedData  = $request->validate(['title'=>'required|min:2','band'=> 'required']);
-        $song->title    = $validatedData   ['title']       ;
-        $song->band     = $validatedData   ['band']        ;
+        $validatedData          = $request->validate(['title'=>'required|min:2','band'=> 'required' , 'labels_id_ref'=> 'required']);
+        $song->title            = $validatedData   ['title']        ;
+        $song->band             = $validatedData   ['band']         ;
+        $song->labels_id_ref    = $validatedData   ['labels_id_ref'];
 
         $song->save();                          //mit save speichern wir den input
         return redirect('/songs');              //mit redirection leiten wir die seite weiter

@@ -1,12 +1,65 @@
-table {
-    border-color: antiquewhite;
-    background-color: #888;
+
+@media screen and (max-width: 42em) {
+    table, tbody, tr {
+        display: block;
+	}
+    
+    .tablehead {
+        border: 1px;
+        border-color: antiquewhite;
+        background-color: #888;
+    }
+    .tablebody {
+        border: 1px;
+        border-color: antiquewhite;
+        background-color: #3f3636;
+    }
+
+
+
+
+
+
+    
+	tr:first-child {
+		border-top: medium solid lightblue;
+	}
+	tr {
+		border-bottom: medium solid lightblue;
+		padding: .5em 2em 1em;
+	}
+	th::before {
+		content: "Rechnung: ";
+	}
+	td:nth-child(2)::before {
+		content: "Datum: ";
+	}
+	td:nth-child(3)::before {
+		content: "Höhe: ";
+	}
+	td:nth-child(4)::before {
+		content: "Status: ";
+	}
+
+
+	th a {
+		font-weight: normal;
+	}
+	td {
+		display: inline-block;
+		min-width: 30%;
+		padding: .2em 2em;
+		text-align: left;
+	}
+	td:nth-child(3) {
+		text-align: left;
+	}
 }
-.tablehead {
-    border-color: antiquewhite;
-    background-color: #888;
-}
-.tablebody {
-    border-color: antiquewhite;
-    background-color: #3f3636;
+@media screen and (max-width: 33em) {
+	td {
+		display: block;
+	}
+	tr {
+		padding: .5em .5em 1em;
+	}
 }
