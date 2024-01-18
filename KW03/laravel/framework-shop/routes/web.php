@@ -17,4 +17,15 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
+
+
+Route::get('/shop', function () {
+    $id = request('id');
+
+    return view('Artikel-Nummer', ['Artikel-Nummer'=> $id ]);
+});
+
+
+
+
 require __DIR__.'/auth.php';
