@@ -29,3 +29,5 @@ folgende Zeile einfügen:<br>
 code-Sbipped
 
 C:\Users\admin\AppData\Roaming\Code\User\snippets
+
+[nodejs](https://github.com/nodejs/node-gyp#on-windows)<br>
