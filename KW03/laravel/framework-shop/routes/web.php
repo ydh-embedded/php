@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +23,26 @@ Route::get('/', function () {
 Route::get('/shop', function () {
     $id = request('id');
 
-    return view('Artikel-Nummer', ['Artikel-Nummer'=> $id ]);
+    return view('Artikel-Nummer', ['ArtikelNr'=> $id ]);
 });
+
+Route::get('/artikel', function () {
+    return view('artikel-child');
+});
+
+Route::get('/category', function () {
+    return view(        'category-child'        ,
+    [
+        'title'     =>  'Shop'                  ,
+        'heading'   =>  'hier wird bestellt !'  ,
+        'content'   =>  'Inhalt der category'   ,
+        'footer'    =>  'copyright'
+    ]);
+});
+
+/* Route::get('/db', function () {
+    return $db = DB;
+}); */
 
 
 
