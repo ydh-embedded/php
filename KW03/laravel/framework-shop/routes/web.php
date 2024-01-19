@@ -1,5 +1,12 @@
 <?php
 
+use App\Models\Articel;
+use App\Models\Category;
+
+use App\Http\Controllers\ArticelsController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\infosController;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -15,20 +22,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return ['Laravel' => app()->version()];
+/*  return ['Laravel' => app()->version()]; */
+    return view('shop');
 });
 
 
-
-Route::get('/shop', function () {
-    $id = request('id');
-
-    return view('Artikel-Nummer', ['ArtikelNr'=> $id ]);
-});
-
-Route::get('/artikel', function () {
-    return view('artikel-child');
-});
 
 Route::get('/category', function () {
     return view(        'category-child'        ,
@@ -41,9 +39,16 @@ Route::get('/category', function () {
 });
 
 /* Route::get('/db', function () {
-    return $db = DB;
+    return $db = DB::table('categories')->get();
 }); */
 
+// Wir wollen den Controller aufrufen
+Route::get( '/infos', [infosController::class, 'function'] );
+
+Route::resource('/articels', ArticelsConroller::class);
+
+
+Route::resource('/categories', CategoriesConroller::class);
 
 
 
