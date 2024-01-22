@@ -12,6 +12,10 @@ return new class extends Migration
     public function up(): void {
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
+
+            $table->foreign('labels_id_ref')->constraint('songs_labels_id_ref_foreign')->references('id')->on('labels')->onDelete('cascade');
+            $table->foreignID('labels_id_ref');
+
             $table->string('title');
             $table->string('band');
             $table->timestamps();
